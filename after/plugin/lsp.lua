@@ -40,7 +40,7 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.set_preferences({
-    suggest_lsp_servers = false,
+    suggest_lsp_servers = true,
     sign_icons = {
         error = 'E',
         warn = 'W',
@@ -51,6 +51,11 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
+
+   if client.name == "tsserver" then
+        client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
+        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+    end
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)

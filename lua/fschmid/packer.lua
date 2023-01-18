@@ -47,6 +47,7 @@ return packer.startup(function(use)
   use("nvim-tree/nvim-web-devicons")
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use('jose-elias-alvarez/null-ls.nvim')
   use "terrortylor/nvim-comment"
   use 'm4xshen/autoclose.nvim'
   use {
