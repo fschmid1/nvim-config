@@ -12,6 +12,9 @@ opt.expandtab = false
 -- opt.autoindent = true
 opt.scrolloff = 8
 
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 opt.wrap = false
 
 opt.ignorecase = true
