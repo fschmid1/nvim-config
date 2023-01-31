@@ -48,7 +48,7 @@ return packer.startup(function(use)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('jose-elias-alvarez/null-ls.nvim')
-  use "terrortylor/nvim-comment"
+  use('numToStr/Comment.nvim')
   use 'm4xshen/autoclose.nvim'
   use {
 	  'VonHeikemen/lsp-zero.nvim',
