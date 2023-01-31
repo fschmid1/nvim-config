@@ -4,6 +4,7 @@ opt.remap = true
 
 opt.relativenumber = true
 opt.number = true
+opt.cursorline = true
 
 opt.tabstop = 4
 opt.softtabstop = 4
