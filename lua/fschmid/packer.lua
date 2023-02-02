@@ -50,6 +50,7 @@ return packer.startup(function(use)
   use('tpope/vim-fugitive')
   use('jose-elias-alvarez/null-ls.nvim')
   use('numToStr/Comment.nvim')
+  use('nvim-lualine/lualine.nvim')
   use 'm4xshen/autoclose.nvim'
   use {
 	  'VonHeikemen/lsp-zero.nvim',
