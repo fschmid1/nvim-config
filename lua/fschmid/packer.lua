@@ -31,10 +31,10 @@ return packer.startup(function(use)
   }
 
   use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
+	  'joshdick/onedark.vim',
+	  as = 'onedark',
 	  config = function()
-		  vim.cmd('colorscheme rose-pine')
+		  vim.cmd('colorscheme onedark')
 	  end
   })
 
