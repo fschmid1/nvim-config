@@ -11,4 +11,7 @@ vim.keymap.set("n", "x", '"_x')
 -- increment/decrement numbers
 vim.keymap.set("n", "<leader>+", "<C-a>") -- increment
 vim.keymap.set("n", "<leader>-", "<C-x>") -- decrement
-vim.keymap.set("n", "<C-f>", ":lua vim.lsp.buf.format()") -- decrement
+
+vim.keymap.set("n", "<C-f>", ":lua vim.lsp.buf.format()")
+
+vim.keymap.set("n", "<C-g>", ":Git")
