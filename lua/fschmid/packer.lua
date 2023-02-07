@@ -31,10 +31,10 @@ return packer.startup(function(use)
   }
 
   use({
-	  'joshdick/onedark.vim',
-	  as = 'onedark',
+	  'rebelot/kanagawa.nvim',
+	  as = 'kanagawa',
 	  config = function()
-		  vim.cmd('colorscheme onedark')
+		  vim.cmd('colorscheme kanagawa')
 	  end
   })
 
