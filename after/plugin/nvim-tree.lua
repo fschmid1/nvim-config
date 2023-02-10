@@ -27,6 +27,7 @@ nvimtree.setup({
   -- window splits
   actions = {
     open_file = {
+      quit_on_open = true,
       window_picker = {
         enable = false,
       },
@@ -36,4 +37,5 @@ nvimtree.setup({
   -- 		ignore = false,
   -- 	},
 })
-vim.keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<C-b>", ":NvimTreeFindFile<CR>")
+vim.keymap.set("n", "<leader>b", ":NvimTreeToggle<CR>")
