@@ -29,6 +29,10 @@ opt.signcolumn = "yes"
 
 opt.backspace = "indent,eol,start"
 
+
 -- opt.clipboard:append("unnamedplus")
 --
 opt.iskeyword:append("-")
+
+vim.g.user42 = "fschmid"
+vim.g.mail42 = "fschmid@student.42heilbronn.de"
