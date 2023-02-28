@@ -11,7 +11,7 @@ local sources = {
 }
 
 
-vim.keymap.set("n", "<C-f>", ":lua vim.lsp.buf.format()<CR>")
+vim.keymap.set("n", "<C-S-f>", ":lua vim.lsp.buf.format()<CR>")
 
 local on_attach = function(client)
 --     if client.resolved_capabilities.document_formatting then
