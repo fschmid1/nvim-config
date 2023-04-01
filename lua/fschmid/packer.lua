@@ -51,7 +51,7 @@ return packer.startup(function(use)
   use('jose-elias-alvarez/null-ls.nvim')
   use('numToStr/Comment.nvim')
   use('nvim-lualine/lualine.nvim')
-  use('42Paris/42header')
+  -- use('42Paris/42header')
   use 'm4xshen/autoclose.nvim'
   use {
 	  'VonHeikemen/lsp-zero.nvim',
