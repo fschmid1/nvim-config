@@ -33,9 +33,9 @@ nvimtree.setup({
       },
     },
   },
-  -- 	git = {
-  -- 		ignore = false,
-  -- 	},
+  git = {
+	  ignore = false,
+  },
 })
 vim.keymap.set("n", "<C-b>", ":NvimTreeFindFile<CR>")
 vim.keymap.set("n", "<leader>b", ":NvimTreeToggle<CR>")
