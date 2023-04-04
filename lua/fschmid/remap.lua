@@ -12,8 +12,6 @@ vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("n", "<leader>+", "<C-a>") -- increment
 vim.keymap.set("n", "<leader>-", "<C-x>") -- decrement
 
-vim.keymap.set("n", "<C-f>", ":lua vim.lsp.buf.format()")
-
 vim.keymap.set("n", "<C-g>", ":Git ")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -24,4 +22,3 @@ vim.keymap.set("n", "<leader>p", '"+p')
 
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>p", '"+p')
-
