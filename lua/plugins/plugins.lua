@@ -1,29 +1,72 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
--- if true then return {} end
--- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
-  {"nvim-telescope/telescope.nvim",
-  keys = function ()
-   return {
-      {
-        "<leader>ff",
-        "<cmd>Telescope find_files<cr>"
-      },
-      {
-        "<leader><space>",
-        function ()
-          require("telescope.builtin").git_files()
-        end
-      }
-    }
-  end},
   {
-    "tpope/vim-fugitive"
-  }
+    "nvim-telescope/telescope.nvim",
+    keys = function()
+      return {
+        {
+          "<leader>ff",
+          "<cmd>Telescope find_files<cr>",
+        },
+        {
+          "<leader><space>",
+          function()
+            require("telescope.builtin").git_files()
+          end,
+        },
+      }
+    end,
+  },
+  {
+    "tpope/vim-fugitive",
+  },
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = function()
+      local mark = require("harpoon.mark")
+      local ui = require("harpoon.ui")
+      return {
+        {
+          "<leader>a",
+          mode = { "n" },
+          mark.add_file,
+        },
+        {
+          "<C-e>",
+          mode = { "n" },
+          ui.toggle_quick_menu,
+        },
+        {
+          "<C-a>",
+          mode = { "n" },
+          function()
+            ui.nav_file(1)
+          end,
+        },
+        {
+          "<C-s>",
+          mode = { "n" },
+          function()
+            ui.nav_file(2)
+          end,
+        },
+        {
+          "<C-d>",
+          mode = { "n" },
+          function()
+            ui.nav_file(3)
+          end,
+        },
+        {
+          "<C-f>",
+          mode = { "n" },
+          function()
+            ui.nav_file(4)
+          end,
+        },
+      }
+    end,
+  },
 }
