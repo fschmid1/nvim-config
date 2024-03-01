@@ -13,6 +13,18 @@ return {
             require("telescope.builtin").git_files()
           end,
         },
+        {
+          "<leader>/",
+          "<cmd>Telescope live_grep<cr>",
+        },
+        {
+          "<leader>fb",
+          "<cmd>Telescope buffers<cr>",
+        },
+        {
+          "<leader>fh",
+          "<cmd>Telescope help_tags<cr>",
+        },
       }
     end,
   },
