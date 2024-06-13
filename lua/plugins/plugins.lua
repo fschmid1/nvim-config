@@ -91,47 +91,87 @@ return {
   },
   {
     "nvim-cmp",
+    keys = {
+      { "<tab>", false, mode = { "i", "s" } },
+      { "<s-tab>", false, mode = { "i", "s" } },
+    },
     dependencies = {
       {
-        "zbirenbaum/copilot-cmp",
-        dependencies = "copilot.lua",
+        "supermaven-inc/supermaven-nvim",
+        build = "",
         opts = {},
-        config = function(_, opts)
-          local copilot_cmp = require("copilot_cmp")
-          copilot_cmp.setup(opts)
-          -- attach cmp source whenever copilot attaches
-          -- fixes lazy-loading issues with the copilot cmp source
-          require("lazyvim.util").lsp.on_attach(function(client)
-            if client.name == "copilot" then
-              copilot_cmp._on_insert_enter({})
-            end
-          end)
+        config = function()
+          require("supermaven-nvim").setup({
+            keymaps = {
+              accept_suggestion = "<Tab>",
+            },
+            disable_inline_completion = false,
+          })
         end,
       },
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
-      table.insert(opts.sources, 1, {
-        name = "copilot",
-        group_index = 1,
-        priority = 100,
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
+
+      local luasnip = require("luasnip")
+      local cmp = require("cmp")
+
+      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          local sugesstion = require("supermaven-nvim.completion_preview")
+
+          if sugesstion.has_suggestion() then
+            sugesstion.on_accept_suggestion()
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif has_words_before() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
       })
+      -- table.insert(opts.sources, 1, {
+      --   name = "supermaven",
+      --   group_index = 1,
+      --   priority = 100,
+      -- })
     end,
   },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = "copilot.lua",
-    opts = {},
-    config = function(_, opts)
-      local copilot_cmp = require("copilot_cmp")
-      copilot_cmp.setup(opts)
-      -- attach cmp source whenever copilot attaches
-      -- fixes lazy-loading issues with the copilot cmp source
-      require("lazyvim.util").lsp.on_attach(function(client)
-        if client.name == "copilot" then
-          copilot_cmp._on_insert_enter({})
-        end
-      end)
-    end,
-  },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   dependencies = "copilot.lua",
+  --   opts = {},
+  --   config = function(_, opts)
+  --     local copilot_cmp = require("copilot_cmp")
+  --     copilot_cmp.setup(opts)
+  --     -- attach cmp source whenever copilot attaches
+  --     -- fixes lazy-loading issues with the copilot cmp source
+  --     require("lazyvim.util").lsp.on_attach(function(client)
+  --       if client.name == "copilot" then
+  --         copilot_cmp._on_insert_enter({})
+  --       end
+  --     end)
+  --   end,
+  -- },
+  -- {
+  --   "supermaven-inc/supermaven-nvim",
+  --   config = function()
+  --     require("supermaven-nvim").setup({
+  --       disable_inline_completion = true,
+  --     })
+  --   end,
+  -- },
 }
