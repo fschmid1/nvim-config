@@ -10,11 +10,10 @@ vim.keymap.set("n", "x", '"_x')
 
 vim.keymap.set("n", "<C-g>", ":Git ")
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
 vim.keymap.set("n", "J", "10j")
 vim.keymap.set("n", "K", "10k")
+vim.keymap.set("v", "J", "10j")
+vim.keymap.set("v", "K", "10k")
 
 vim.keymap.set("n", "<leader>p", '"+p')
 vim.keymap.set("n", "<leader>y", '"+yy')
