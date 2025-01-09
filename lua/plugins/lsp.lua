@@ -9,14 +9,23 @@ return {
           filetypes = {
             "html",
             "templ",
+            "htmlangular",
           },
         },
         tailwindcss = {
-          filetypes = { "templ", "astro", "javascript", "typescript", "react", "html" },
+          filetypes = { "templ", "astro", "javascript", "typescript", "react", "html", "htmlangular" },
           init_options = { userLanguages = { templ = "html" } },
+        },
+        angularls = {
+          filetypes = {
+            "htmlangular",
+          },
         },
         htmx = {
           filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+        },
+        tsserver = {
+          filetypes = { "typescript", "htmlangular" },
         },
       },
     },
